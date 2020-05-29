@@ -1,30 +1,17 @@
 # oligoQC-only-primers
 
-This script accepts alignment files or PE reads. If the input are alignment 
-files, then the script will extract mapped reads not mapping to SNPs locations
-and count the most frequent occurrence of the first n bases from each read.
-The script will create by default a padded file 100bases +/- the SNP 
-location. 
+This script will align the primer sequences on the reference genome and 
+predict, based on distance and orientation, potential product amplifications. 
 
-Alternatively, the script can use as input read files. The script will extract
-n bases from each read and blast the sequences against the primers DB.
+By default, the maximum amplicon size is 2kb (which can be modified).
+
 
 USAGE:
     $ /path/to/script.sh OPTIONS
-        Required:
 
-        [ -a Alignments directory ]
-        [ -t Target file. bed format. ]
+        [ -p Primers fasta file ]
         [ -r Reference file Blast DB ]
-
-	or 
-
-	[ -s Reads directory ]
-
-        [ -p Full path to primers fasta file ]
-	[ -o Output directory  ]
-
-	Optional:
-        [ -n increase by n bases the bed regions. Default: 100 bases ]
-        [ -b Number of bases to trim. Default: 18 bases. ]
+        [ -o Output directory  ]
+        [ -m Primers distance apart to merge blast hits
+             as potential amplicons. Default: 2000 ]
         [ -v verbose ]
